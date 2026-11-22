@@ -232,9 +232,12 @@ def classify(p: dict, today: dt.date) -> dict | None:
     citizen = bool(p.get("list_citizen") or C._CITIZEN_RE.search(desc) or clearance)
     near = C.near_home(locs)
     fit, why = C.score(title, desc, field=field, near=near, clearance=clearance, grad=grad,
-                       skillbridge=skillbridge, terms=terms)
+                       skillbridge=skillbridge, terms=terms, sector=p["sector"])
+    if near:  # show the location near home first
+        locs = sorted(locs, key=lambda l: not C.near_home([l]))
     return {
         **p,
+        "locations": locs,
         "terms": [t for t in terms if not C.term_is_past(t, today)] or terms,
         "field": field, "grad": grad, "skillbridge": skillbridge, "clearance": clearance,
         "citizen": citizen, "near": near, "remote": C.is_remote(locs), "fit": fit, "why": why,
@@ -307,7 +310,14 @@ def merge(items: list[dict]) -> list[dict]:
                 g["desc"] = C.clip(p["desc"], DESC_LIMIT)
         if posting["url"] not in {x["url"] for x in g["postings"]}:
             g["postings"].append(posting)
+    # One display name per company ("Acme" and "Acme, Inc." -> "Acme")
+    names: dict[str, str] = {}
     for g in groups.values():
+        k = norm_company(g["company"])
+        if k not in names or len(g["company"]) < len(names[k]):
+            names[k] = g["company"]
+    for g in groups.values():
+        g["company"] = names[norm_company(g["company"])]
         dates = [x["posted"] for x in g["postings"] if x["posted"]]
         dls = [x["deadline"] for x in g["postings"] if x["deadline"]]
         g["posted"] = max(dates) if dates else ""

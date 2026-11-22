@@ -155,7 +155,7 @@ def location_is_us(loc: str) -> bool | None:
         return True
     if _US_RE.search(loc):
         return True
-    if _CA_PROVINCE_RE.search(loc):
+    if _CA_PROVINCE_RE.search(loc) or re.search(r"\b(UK|U\.K\.)\b", loc):
         return False
     if _NON_US_RE.search(loc):
         return False
@@ -264,7 +264,7 @@ _SOFTWARE_RE = re.compile(
 _BUSINESS_RE = re.compile(
     r"\b(finance|financial|accounting|accountant|business|marketing|communications|public relations|supply chain|procurement|purchasing"
     r"|buyer|sourcing|human resources|\bhr\b|talent|recruit|people operations|legal|contracts?|paralegal|program management|project management"
-    r"|program manager|project manager|pmo|sales|strategy|economics|audit|tax|treasury|administrative|admin|office|facilities|logistics"
+    r"|program manager|project manager|product management|product manager|pmo|sales|strategy|economics|audit|tax|treasury|administrative|admin|office|facilities|logistics"
     r"|trade compliance|compliance|government relations|policy|communications|graphic design|events?|philanthropy|estimating)\b",
     re.I,
 )
@@ -372,13 +372,13 @@ def clearance_of(text: str, extra: str = "") -> str:
 # --------------------------------------------------------------------------
 # (pattern, points if in the title, points if only in the description, label)
 FIT_RULES = [
-    (r"propulsion|rocket engine|liquid rocket|engine development|thrust chamber|combustion|injector|turbopump|regenerative(?:ly)?[- ]cool|regen cool|hot[- ]?fire|\bthruster",
+    (r"propulsion|rocket engine|liquid rocket|thrust chamber|combustion|injector|turbopump|regenerative(?:ly)?[- ]cool|regen cool|hot[- ]?fire|\bthruster",
      30, 12, "propulsion"),
     (r"\bcfd\b|computational fluid|converge cfd|\bconverge\b|star-?ccm|ansys fluent|\bfluent\b", 22, 12, "CFD"),
     (r"fluids?\b|thermal|heat transfer|thermofluid|cryogenic|turbomachinery", 12, 5, "thermal/fluids"),
     (r"aerospace|astronaut|aeronaut|spacecraft|space vehicle|launch vehicle|satellite|rocket|starship|falcon|new glenn|vulcan|orbital|lunar|space systems", 14, 5, "space/aero"),
     (r"\btest\b|testing|test engineer|test stand|test operations|integration and test|i&t", 10, 3, "test"),
-    (r"mechanical|structures|structural|mechanisms|design engineer|hardware engineer", 12, 3, "mechanical"),
+    (r"mechanical|structures|structural|mechanisms|mechatronics", 12, 3, "mechanical"),
     (r"manufactur|machin|fabricat|welding|additive|\bcnc\b|mastercam|production engineer", 8, 3, "manufacturing"),
     (r"materials|coatings?|ceramic|thermal barrier|metallurg|x-ray diffraction|\bxrd\b|characterization", 8, 5, "materials"),
     (r"solidworks|\bcad\b|fusion 360|siemens nx|\bcreo\b|catia", 4, 3, "CAD"),
@@ -386,9 +386,13 @@ FIT_RULES = [
 _FIT_COMPILED = [(re.compile(p, re.I), wt, wd, lab) for p, wt, wd, lab in FIT_RULES]
 
 
+_CHIP_RE = re.compile(r"\b(asic|rtl|fpga|silicon|soc|vlsi|analog design|physical design|digital design|verification engineer|firmware|semiconductor)\b", re.I)
+SECTOR_BONUS = {"space": 15, "defense": 10, "aviation": 10, "lab": 8}
+
+
 def score(title: str, desc: str, *, field: str, near: str, clearance: str, grad: bool,
-          skillbridge: bool, terms: list[str]) -> tuple[int, list[str]]:
-    s = 0
+          skillbridge: bool, terms: list[str], sector: str = "") -> tuple[int, list[str]]:
+    s = SECTOR_BONUS.get(sector, 0)
     why: list[str] = []
     d = desc[:12000]
     for rx, wt, wd, label in _FIT_COMPILED:
@@ -398,6 +402,8 @@ def score(title: str, desc: str, *, field: str, near: str, clearance: str, grad:
         elif d and rx.search(d):
             s += wd
             why.append(label)
+    if _CHIP_RE.search(title):
+        s -= 10  # chip / firmware work is far from mechanical-aerospace
     if field == "Engineering":
         s += 12
     elif field == "Software & data":
@@ -405,7 +411,7 @@ def score(title: str, desc: str, *, field: str, near: str, clearance: str, grad:
     else:
         s -= 25
     if near:
-        s += 12 if near != "Huntsville area" else 7
+        s += {"Knoxville area": 15, "Huntsville area": 7}.get(near, 6)
         why.append(near)
     if clearance:
         s += 6
