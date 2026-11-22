@@ -1,0 +1,524 @@
+# Companies the tracker checks directly on their own career sites.
+#
+# Every entry needs:
+#   name    - how the company shows on the page
+#   sector  - one of: space, defense, aviation, lab, other
+#   ats     - which job system the company uses (see below)
+# plus the fields that job system needs.
+#
+#   ats = "greenhouse"       slug = "spacex"            (boards.greenhouse.io/<slug>)
+#   ats = "lever"            slug = "hermeus"           (jobs.lever.co/<slug>)
+#   ats = "ashby"            slug = "saronic"           (jobs.ashbyhq.com/<slug>)
+#   ats = "workday"          host = "boeing.wd1.myworkdayjobs.com", site = "EXTERNAL_CAREERS"
+#   ats = "successfactors"   host = "jobs.ornl.gov"
+#   ats = "oracle"           host = "...oraclecloud.com", site = "CX"
+#   ats = "smartrecruiters"  slug = "LLNL"
+#   ats = "jibe"             host = "careers.jhuapl.edu"
+#
+# Companies NOT listed here still show up if they appear on the community
+# internship lists (SimplifyJobs and others); this file is for employers we
+# want full job descriptions from.
+
+# ---------------------------------------------------------------- Space ----
+[[company]]
+name = "SpaceX"
+sector = "space"
+ats = "greenhouse"
+slug = "spacex"
+
+[[company]]
+name = "Blue Origin"
+sector = "space"
+ats = "workday"
+host = "blueorigin.wd5.myworkdayjobs.com"
+site = "BlueOrigin"
+
+[[company]]
+name = "United Launch Alliance (ULA)"
+sector = "space"
+ats = "successfactors"
+host = "jobs.ulalaunch.com"
+
+[[company]]
+name = "Rocket Lab"
+sector = "space"
+ats = "greenhouse"
+slug = "rocketlab"
+
+[[company]]
+name = "Firefly Aerospace"
+sector = "space"
+ats = "workday"
+host = "fireflyspace.wd115.myworkdayjobs.com"
+site = "firefly"
+
+[[company]]
+name = "Relativity Space"
+sector = "space"
+ats = "greenhouse"
+slug = "relativity"
+
+[[company]]
+name = "Ursa Major"
+sector = "space"
+ats = "greenhouse"
+slug = "ursamajor"
+
+[[company]]
+name = "Sierra Space"
+sector = "space"
+ats = "workday"
+host = "sierraspace.wd1.myworkdayjobs.com"
+site = "Sierra_Space_External_Career_Site"
+
+[[company]]
+name = "Axiom Space"
+sector = "space"
+ats = "workday"
+host = "axiomspace.wd5.myworkdayjobs.com"
+site = "External_Career_Site"
+
+[[company]]
+name = "NASA Jet Propulsion Laboratory (JPL)"
+sector = "space"
+ats = "workday"
+host = "citjpl.wd5.myworkdayjobs.com"
+site = "Jobs"
+
+[[company]]
+name = "The Aerospace Corporation"
+sector = "space"
+ats = "workday"
+host = "aero.wd5.myworkdayjobs.com"
+site = "external"
+
+[[company]]
+name = "Analytical Mechanics Associates (NASA contractor)"
+sector = "space"
+ats = "workday"
+host = "amainc.wd12.myworkdayjobs.com"
+site = "ama_careers"
+
+[[company]]
+name = "Astranis"
+sector = "space"
+ats = "greenhouse"
+slug = "astranis"
+
+[[company]]
+name = "Varda Space Industries"
+sector = "space"
+ats = "greenhouse"
+slug = "vardaspace"
+
+[[company]]
+name = "Vast"
+sector = "space"
+ats = "greenhouse"
+slug = "vast"
+
+[[company]]
+name = "Stratolaunch"
+sector = "space"
+ats = "greenhouse"
+slug = "stratolaunch"
+
+[[company]]
+name = "K2 Space"
+sector = "space"
+ats = "greenhouse"
+slug = "k2spacecorporation"
+
+[[company]]
+name = "True Anomaly"
+sector = "space"
+ats = "greenhouse"
+slug = "trueanomalyinc"
+
+[[company]]
+name = "Muon Space"
+sector = "space"
+ats = "greenhouse"
+slug = "muonspace"
+
+[[company]]
+name = "Voyager Technologies"
+sector = "space"
+ats = "greenhouse"
+slug = "voyagertechnologiesinc"
+
+[[company]]
+name = "Inversion Space"
+sector = "space"
+ats = "greenhouse"
+slug = "inversionspace"
+
+[[company]]
+name = "Momentus"
+sector = "space"
+ats = "greenhouse"
+slug = "momentus"
+
+[[company]]
+name = "Scout Space"
+sector = "space"
+ats = "greenhouse"
+slug = "scoutspace"
+
+[[company]]
+name = "Advanced Space"
+sector = "space"
+ats = "greenhouse"
+slug = "advancedspace"
+
+[[company]]
+name = "Spaceium"
+sector = "space"
+ats = "greenhouse"
+slug = "spaceium"
+
+[[company]]
+name = "Space Kinetic"
+sector = "space"
+ats = "greenhouse"
+slug = "spacekinetic"
+
+[[company]]
+name = "Katalyst Space Technologies"
+sector = "space"
+ats = "greenhouse"
+slug = "katalyst"
+
+[[company]]
+name = "Planet"
+sector = "space"
+ats = "greenhouse"
+slug = "planetlabs"
+
+[[company]]
+name = "Spire Global"
+sector = "space"
+ats = "greenhouse"
+slug = "spire"
+
+[[company]]
+name = "Capella Space"
+sector = "space"
+ats = "greenhouse"
+slug = "capellaspace"
+
+[[company]]
+name = "HawkEye 360"
+sector = "space"
+ats = "greenhouse"
+slug = "hawkeye360"
+
+[[company]]
+name = "Albedo"
+sector = "space"
+ats = "greenhouse"
+slug = "albedo"
+
+[[company]]
+name = "Northwood Space"
+sector = "space"
+ats = "ashby"
+slug = "NorthwoodSpace"
+
+[[company]]
+name = "Cowboy Space"
+sector = "space"
+ats = "ashby"
+slug = "cowboyspace"
+
+[[company]]
+name = "Constellation Space"
+sector = "space"
+ats = "ashby"
+slug = "constellationspace"
+
+[[company]]
+name = "Logos Space"
+sector = "space"
+ats = "ashby"
+slug = "logos-space"
+
+[[company]]
+name = "Observable Space"
+sector = "space"
+ats = "ashby"
+slug = "observable-space"
+
+[[company]]
+name = "Apex Space"
+sector = "space"
+ats = "ashby"
+slug = "apex-technology-inc"
+
+[[company]]
+name = "E-Space"
+sector = "space"
+ats = "lever"
+slug = "espace"
+
+# -------------------------------------------------------------- Defense ----
+[[company]]
+name = "Northrop Grumman"
+sector = "defense"
+ats = "workday"
+host = "ngc.wd1.myworkdayjobs.com"
+site = "Northrop_Grumman_External_Site"
+
+[[company]]
+name = "RTX (Raytheon, Pratt & Whitney, Collins)"
+sector = "defense"
+ats = "workday"
+host = "globalhr.wd5.myworkdayjobs.com"
+site = "REC_RTX_Ext_Gateway"
+
+[[company]]
+name = "L3Harris (incl. Aerojet Rocketdyne)"
+sector = "defense"
+ats = "successfactors"
+host = "jobs.l3harris.com"
+
+[[company]]
+name = "Leidos (incl. Dynetics)"
+sector = "defense"
+ats = "workday"
+host = "leidos.wd5.myworkdayjobs.com"
+site = "External"
+
+[[company]]
+name = "Sierra Nevada Corporation"
+sector = "defense"
+ats = "workday"
+host = "snc.wd1.myworkdayjobs.com"
+site = "snc_external_career_site"
+
+[[company]]
+name = "SAIC"
+sector = "defense"
+ats = "oracle"
+host = "eihu.fa.us8.oraclecloud.com"
+site = "CX"
+
+[[company]]
+name = "KBR"
+sector = "defense"
+ats = "workday"
+host = "kbr.wd5.myworkdayjobs.com"
+site = "KBR_Careers"
+
+[[company]]
+name = "Amentum"
+sector = "defense"
+ats = "workday"
+host = "pae.wd1.myworkdayjobs.com"
+site = "amentum_careers"
+
+[[company]]
+name = "General Dynamics Information Technology (GDIT)"
+sector = "defense"
+ats = "workday"
+host = "gdit.wd5.myworkdayjobs.com"
+site = "external_career_site"
+
+[[company]]
+name = "CACI"
+sector = "defense"
+ats = "workday"
+host = "caci.wd1.myworkdayjobs.com"
+site = "external"
+
+[[company]]
+name = "Torch Technologies (Huntsville / Arnold AFB)"
+sector = "defense"
+ats = "workday"
+host = "starfish.wd501.myworkdayjobs.com"
+site = "Careers"
+
+[[company]]
+name = "AeroVironment"
+sector = "defense"
+ats = "workday"
+host = "avav.wd1.myworkdayjobs.com"
+site = "avav"
+
+[[company]]
+name = "Teledyne FLIR"
+sector = "defense"
+ats = "workday"
+host = "flir.wd1.myworkdayjobs.com"
+site = "flircareers"
+
+[[company]]
+name = "Anduril Industries"
+sector = "defense"
+ats = "greenhouse"
+slug = "andurilindustries"
+
+[[company]]
+name = "Shield AI"
+sector = "defense"
+ats = "ashby"
+slug = "shield"
+
+[[company]]
+name = "Saronic"
+sector = "defense"
+ats = "ashby"
+slug = "saronic"
+
+[[company]]
+name = "Castelion"
+sector = "defense"
+ats = "greenhouse"
+slug = "castelioncorporation"
+
+[[company]]
+name = "Mach Industries"
+sector = "defense"
+ats = "greenhouse"
+slug = "machindustries"
+
+[[company]]
+name = "Epirus"
+sector = "defense"
+ats = "greenhouse"
+slug = "epirus"
+
+[[company]]
+name = "AEVEX Aerospace"
+sector = "defense"
+ats = "greenhouse"
+slug = "aevexaerospace"
+
+[[company]]
+name = "Hadrian"
+sector = "defense"
+ats = "ashby"
+slug = "hadrian-automation"
+
+# ------------------------------------------------------------- Aviation ----
+[[company]]
+name = "Boeing"
+sector = "aviation"
+ats = "workday"
+host = "boeing.wd1.myworkdayjobs.com"
+site = "EXTERNAL_CAREERS"
+
+[[company]]
+name = "GE Aerospace"
+sector = "aviation"
+ats = "workday"
+host = "geaerospace.wd5.myworkdayjobs.com"
+site = "GE_ExternalSite"
+
+[[company]]
+name = "Honeywell Aerospace"
+sector = "aviation"
+ats = "oracle"
+host = "icfcjb.fa.ocs.oraclecloud.com"
+site = "Aerospace"
+
+[[company]]
+name = "Moog"
+sector = "aviation"
+ats = "workday"
+host = "moog.wd5.myworkdayjobs.com"
+site = "moog_external_career_site"
+
+[[company]]
+name = "Hermeus"
+sector = "aviation"
+ats = "lever"
+slug = "hermeus"
+
+[[company]]
+name = "Archer Aviation"
+sector = "aviation"
+ats = "greenhouse"
+slug = "archer56"
+
+[[company]]
+name = "Electra"
+sector = "aviation"
+ats = "greenhouse"
+slug = "electraaero"
+
+[[company]]
+name = "Wisk"
+sector = "aviation"
+ats = "workday"
+host = "wisk.wd108.myworkdayjobs.com"
+site = "Wisk_Careers"
+
+[[company]]
+name = "Reliable Robotics"
+sector = "aviation"
+ats = "ashby"
+slug = "reliable-robotics"
+
+[[company]]
+name = "Skydio"
+sector = "aviation"
+ats = "ashby"
+slug = "skydio"
+
+[[company]]
+name = "Odys Aviation"
+sector = "aviation"
+ats = "ashby"
+slug = "odys-aviation"
+
+[[company]]
+name = "Acron Aviation"
+sector = "aviation"
+ats = "lever"
+slug = "acronaviation"
+
+[[company]]
+name = "Western Aircraft"
+sector = "aviation"
+ats = "lever"
+slug = "westair"
+
+# ------------------------------------------------ National labs & FFRDCs ----
+[[company]]
+name = "Oak Ridge National Laboratory (ORNL)"
+sector = "lab"
+ats = "successfactors"
+host = "jobs.ornl.gov"
+
+[[company]]
+name = "Johns Hopkins Applied Physics Laboratory (APL)"
+sector = "lab"
+ats = "jibe"
+host = "careers.jhuapl.edu"
+
+[[company]]
+name = "Lawrence Livermore National Laboratory (LLNL)"
+sector = "lab"
+ats = "smartrecruiters"
+slug = "LLNL"
+
+[[company]]
+name = "Pacific Northwest National Laboratory (PNNL)"
+sector = "lab"
+ats = "jibe"
+host = "careers.pnnl.gov"
+
+[[company]]
+name = "Argonne National Laboratory"
+sector = "lab"
+ats = "workday"
+host = "argonne.wd1.myworkdayjobs.com"
+site = "EDU_PUB"
+
+[[company]]
+name = "National Laboratory of the Rockies (NREL)"
+sector = "lab"
+ats = "workday"
+host = "nrel.wd5.myworkdayjobs.com"
+site = "NLR"

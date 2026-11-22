@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Internship Tracker</title>
+<meta name="description" content="Aerospace, space, defense and engineering internships, grouped by company and updated every week.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --text: #16191d;
+  --muted: #5b6470;
+  --border: #dde1e6;
+  --accent: #1f5fbf;
+  --accent-soft: #e6eefb;
+  --good: #1b7a3e;
+  --good-soft: #e3f4e8;
+  --warn: #a35a00;
+  --warn-soft: #fbefdc;
+  --new: #7a2fb5;
+  --new-soft: #f1e6fa;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1216;
+    --surface: #171b21;
+    --surface-2: #1e232b;
+    --text: #e8ebef;
+    --muted: #9aa4b1;
+    --border: #2b323c;
+    --accent: #7fb0ff;
+    --accent-soft: #1b2a42;
+    --good: #6fd492;
+    --good-soft: #15301f;
+    --warn: #f0b45c;
+    --warn-soft: #34270f;
+    --new: #cf9bf5;
+    --new-soft: #2c1b3b;
+    --danger: #ff8a80;
+    --danger-soft: #3a1714;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1216;
+  --surface: #171b21;
+  --surface-2: #1e232b;
+  --text: #e8ebef;
+  --muted: #9aa4b1;
+  --border: #2b323c;
+  --accent: #7fb0ff;
+  --accent-soft: #1b2a42;
+  --good: #6fd492;
+  --good-soft: #15301f;
+  --warn: #f0b45c;
+  --warn-soft: #34270f;
+  --new: #cf9bf5;
+  --new-soft: #2c1b3b;
+  --danger: #ff8a80;
+  --danger-soft: #3a1714;
+  --shadow: none;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+a { color: var(--accent); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+header.top { padding: 28px 0 12px; }
+h1 { font-size: 26px; line-height: 1.2; margin: 0 0 4px; letter-spacing: -0.01em; }
+.sub { color: var(--muted); margin: 0; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; color: var(--muted); font-size: 14px; }
+.stats b { color: var(--text); font-variant-numeric: tabular-nums; }
+.bar {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+}
+.controls { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 8px; }
+.controls input, .controls select {
+  width: 100%; min-width: 0; font: inherit; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px;
+}
+.controls input:focus, .controls select:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
+.chip {
+  font: inherit; font-size: 13px; cursor: pointer; user-select: none;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  border-radius: 999px; padding: 4px 11px;
+}
+.chip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.chips .spacer { flex: 1; }
+.linkbtn { background: none; border: 0; color: var(--accent); font: inherit; font-size: 13px; cursor: pointer; padding: 4px 6px; text-decoration: underline; }
+.result-line { color: var(--muted); font-size: 14px; margin: 14px 0 6px; }
+.notice { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin: 12px 0; font-size: 14px; color: var(--muted); }
+.company { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin: 12px 0; box-shadow: var(--shadow); overflow: hidden; }
+.company > header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.company h2 { font-size: 17px; margin: 0; }
+.company .count { color: var(--muted); font-size: 13px; }
+.company .careers { margin-left: auto; font-size: 13px; }
+.sector { font-size: 12px; border-radius: 6px; padding: 1px 7px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); }
+.job { padding: 12px 16px; border-top: 1px solid var(--border); }
+.job:first-of-type { border-top: 0; }
+.job .title-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+.job h3 { font-size: 15.5px; margin: 0; font-weight: 600; }
+.meta { color: var(--muted); font-size: 13.5px; margin-top: 3px; }
+.meta span + span::before { content: "·"; margin: 0 6px; color: var(--border); }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.tag { font-size: 12px; border-radius: 6px; padding: 1px 7px; border: 1px solid var(--border); color: var(--muted); background: var(--surface); white-space: nowrap; }
+.tag.new { color: var(--new); background: var(--new-soft); border-color: transparent; font-weight: 600; }
+.tag.strong { color: var(--good); background: var(--good-soft); border-color: transparent; font-weight: 600; }
+.tag.goodm { color: var(--good); border-color: color-mix(in srgb, var(--good) 40%, transparent); }
+.tag.soon { color: var(--danger); background: var(--danger-soft); border-color: transparent; }
+.tag.clear { color: var(--warn); background: var(--warn-soft); border-color: transparent; }
+.tag.near { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; align-items: center; }
+.btn {
+  font: inherit; font-size: 13.5px; cursor: pointer; text-decoration: none;
+  border-radius: 8px; padding: 5px 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text);
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.details { margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px; }
+.details .why { font-size: 13.5px; margin: 0 0 8px; }
+.details .links { font-size: 13.5px; margin: 0 0 8px; }
+.details .links a { margin-right: 10px; display: inline-block; }
+.desc { white-space: pre-line; font-size: 14px; line-height: 1.55; max-height: 460px; overflow: auto; background: var(--surface-2); border-radius: 8px; padding: 10px 12px; overflow-wrap: anywhere; }
+.more { display: block; width: 100%; text-align: center; padding: 10px; background: none; border: 0; border-top: 1px solid var(--border); color: var(--accent); font: inherit; font-size: 14px; cursor: pointer; }
+footer.bottom { margin: 28px 0 48px; color: var(--muted); font-size: 14px; }
+footer.bottom h2 { font-size: 16px; color: var(--text); margin: 24px 0 8px; }
+.direct-list { margin: 0; padding-left: 18px; }
+.direct-list li { margin: 4px 0; }
+details.sources summary { cursor: pointer; color: var(--text); font-weight: 600; margin: 24px 0 8px; }
+table.src { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.src th, table.src td { text-align: left; padding: 5px 6px; border-bottom: 1px solid var(--border); vertical-align: top; }
+table.src td.num { font-variant-numeric: tabular-nums; text-align: right; }
+.ok { color: var(--good); }
+.bad { color: var(--danger); }
+.empty { text-align: center; color: var(--muted); padding: 40px 0; }
+@media (max-width: 760px) {
+  .controls { grid-template-columns: 1fr 1fr; }
+  .controls .search { grid-column: 1 / -1; }
+  h1 { font-size: 22px; }
+  .company .careers { margin-left: 0; width: 100%; }
+}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <h1>Internship Tracker</h1>
+  <p class="sub">Aerospace, space, defense, national-lab and engineering internships in the U.S., grouped by company. Refreshed every week.</p>
+  <div class="stats" id="stats"></div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="controls">
+      <input class="search" id="q" type="search" placeholder="Search titles, companies, locations, skills…" aria-label="Search">
+      <select id="term" aria-label="Term"></select>
+      <select id="field" aria-label="Type of role">
+        <option value="Engineering">Engineering &amp; science</option>
+        <option value="Engineering+Software">+ Software &amp; data</option>
+        <option value="all">All roles</option>
+      </select>
+      <select id="sector" aria-label="Industry">
+        <option value="all">All industries</option>
+        <option value="space">Space</option>
+        <option value="defense">Defense</option>
+        <option value="aviation">Aviation</option>
+        <option value="lab">Labs &amp; research</option>
+        <option value="other">Other engineering</option>
+      </select>
+      <select id="sort" aria-label="Sort">
+        <option value="fit">Sort: best match</option>
+        <option value="count">Sort: most openings</option>
+        <option value="new">Sort: newest</option>
+        <option value="az">Sort: company A–Z</option>
+      </select>
+    </div>
+    <div class="chips" role="group" aria-label="Filters">
+      <button class="chip" data-flag="newOnly" aria-pressed="false">New this week</button>
+      <button class="chip" data-flag="strongOnly" aria-pressed="false">Good matches only</button>
+      <button class="chip" data-flag="nearOnly" aria-pressed="false">Near Knoxville / Huntsville</button>
+      <button class="chip" data-flag="clearOnly" aria-pressed="false">Mentions clearance</button>
+      <button class="chip" data-flag="showGrad" aria-pressed="false">Include grad-only</button>
+      <span class="spacer"></span>
+      <button class="linkbtn" id="reset" type="button">Reset</button>
+      <a class="linkbtn" href="data/internships.csv" download>Download spreadsheet</a>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="notice"></div>
+  <div class="result-line" id="resultLine" aria-live="polite"></div>
+  <div id="list"></div>
+</main>
+
+<footer class="bottom wrap">
+  <h2>Check these directly</h2>
+  <p>These big programs aren't in the automatic feed, because their sites can't be read automatically or need an account. Check them yourself every few weeks:</p>
+  <ul class="direct-list">
+    <li><a href="https://www.lockheedmartinjobs.com/" target="_blank" rel="noopener">Lockheed Martin careers</a>: search "intern". Their site blocks automated readers, so only postings that show up on the community lists appear above.</li>
+    <li><a href="https://intern.nasa.gov/" target="_blank" rel="noopener">NASA internships (OSTEM)</a>: NASA's own paid internships at every center.</li>
+    <li><a href="https://www.usajobs.gov/search/results/?hp=student" target="_blank" rel="noopener">USAJOBS: student / Pathways jobs</a>: federal internships (NASA, Air Force, Navy, Army labs) that can turn into full-time jobs.</li>
+    <li><a href="https://www.zintellect.com/" target="_blank" rel="noopener">ORISE / Zintellect</a>: research internships at DOE and DoD labs, including ORNL programs.</li>
+    <li><a href="https://www.smartscholarship.org/" target="_blank" rel="noopener">DoD SMART Scholarship</a>: tuition plus paid summer internships at DoD labs, with a job afterward.</li>
+  </ul>
+  <div id="watching"></div>
+  <details class="sources">
+    <summary>Where this data comes from</summary>
+    <p>Each week the tracker reads company career sites directly (descriptions come from the company), plus community internship lists for everything else. Postings disappear when the company takes them down. Match scores are keyword-based, so treat them as a sorting aid and read the posting.</p>
+    <div id="sources"></div>
+  </details>
+  <p id="generated"></p>
+</footer>
+
+<script>
+const DATA = /*__DATA__*/null;
+(function () {
+  "use strict";
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const safeUrl = (u) => (/^https?:\/\//i.test(u || "") ? u : "#");
+  const SECTOR = { space: "Space", defense: "Defense", aviation: "Aviation", lab: "Labs & research", other: "Other" };
+  const STRONG = 50, GOOD = 30, PER_COMPANY = 8;
+
+  function fmtDate(iso) {
+    if (!iso) return "";
+    const d = new Date(iso + "T12:00:00Z");
+    return isNaN(d) ? iso : d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  }
+  function daysBetween(a, b) { return Math.round((new Date(b + "T12:00:00Z") - new Date(a + "T12:00:00Z")) / 864e5); }
+
+  if (!DATA) {
+    $("#list").innerHTML = '<p class="empty">No data yet. The first weekly update hasn\'t run.</p>';
+    return;
+  }
+
+  const today = DATA.today;
+  const jobs = DATA.jobs.map((j) => {
+    const isNew = j.first_seen > DATA.tracker_started && daysBetween(j.first_seen, today) <= 6;
+    const soon = j.deadline && daysBetween(today, j.deadline) >= 0 && daysBetween(today, j.deadline) <= 14;
+    const hay = [j.title, j.company, j.locations.join(" "), j.terms.join(" "), j.why.join(" "), j.summary, j.pay, j.clearance].join(" ").toLowerCase();
+    return Object.assign({}, j, { isNew, soon, hay });
+  });
+
+  // ---- term options
+  const termCounts = {};
+  jobs.forEach((j) => j.terms.forEach((t) => { termCounts[t] = (termCounts[t] || 0) + 1; }));
+  const order = { Winter: 0, Spring: 1, Summer: 2, Fall: 3 };
+  const terms = Object.keys(termCounts).filter((t) => termCounts[t] >= 2).sort((a, b) => {
+    const pa = a.match(/^(\w+) (\d{4})$/), pb = b.match(/^(\w+) (\d{4})$/);
+    if (pa && pb) return pa[2] - pb[2] || order[pa[1]] - order[pb[1]];
+    if (pa) return -1; if (pb) return 1; return a.localeCompare(b);
+  });
+  $("#term").innerHTML = '<option value="all">Any term</option>' + terms.map((t) => `<option value="${esc(t)}">${esc(t)} (${termCounts[t]})</option>`).join("");
+
+  // ---- state
+  const DEFAULTS = { q: "", term: "all", field: "Engineering", sector: "all", sort: "fit", newOnly: false, strongOnly: false, nearOnly: false, clearOnly: false, showGrad: false };
+  let state = Object.assign({}, DEFAULTS);
+  try { Object.assign(state, JSON.parse(localStorage.getItem("it-filters") || "{}")); } catch (e) {}
+  const expanded = new Set();
+  const openJobs = new Set();
+  function save() { try { localStorage.setItem("it-filters", JSON.stringify(state)); } catch (e) {} }
+
+  function syncControls() {
+    $("#q").value = state.q;
+    for (const id of ["term", "field", "sector", "sort"]) {
+      const el = $("#" + id);
+      el.value = state[id];
+      if (el.value !== state[id]) { state[id] = DEFAULTS[id]; el.value = state[id]; }
+    }
+    document.querySelectorAll(".chip").forEach((b) => b.setAttribute("aria-pressed", String(!!state[b.dataset.flag])));
+  }
+
+  // ---- filtering
+  function visible(j) {
+    if (state.field === "Engineering" && j.field !== "Engineering") return false;
+    if (state.field === "Engineering+Software" && j.field === "Business & other") return false;
+    if (state.sector !== "all" && j.sector !== state.sector) return false;
+    if (state.term !== "all" && !j.terms.includes(state.term)) return false;
+    if (!state.showGrad && j.grad) return false;
+    if (j.skillbridge) return false;
+    if (state.newOnly && !j.isNew) return false;
+    if (state.strongOnly && j.fit < GOOD) return false;
+    if (state.nearOnly && !j.near) return false;
+    if (state.clearOnly && !j.clearance) return false;
+    if (state.q) {
+      const words = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+      if (!words.every((w) => j.hay.includes(w))) return false;
+    }
+    return true;
+  }
+
+  function jobSort(a, b) {
+    if (state.sort === "new") return (b.first_seen + b.posted).localeCompare(a.first_seen + a.posted) || b.fit - a.fit;
+    return b.fit - a.fit || (b.posted || "").localeCompare(a.posted || "");
+  }
+
+  function render() {
+    save();
+    const shown = jobs.filter(visible);
+    const groups = new Map();
+    for (const j of shown) {
+      if (!groups.has(j.company)) groups.set(j.company, { name: j.company, sector: j.sector, jobs: [] });
+      groups.get(j.company).jobs.push(j);
+    }
+    const list = [...groups.values()];
+    list.forEach((g) => {
+      g.jobs.sort(jobSort);
+      g.top = Math.max(...g.jobs.map((j) => j.fit));
+      g.newest = g.jobs.reduce((m, j) => (j.first_seen + j.posted > m ? j.first_seen + j.posted : m), "");
+    });
+    const s = state.sort;
+    list.sort((a, b) =>
+      s === "az" ? a.name.localeCompare(b.name) :
+      s === "count" ? b.jobs.length - a.jobs.length || a.name.localeCompare(b.name) :
+      s === "new" ? b.newest.localeCompare(a.newest) || a.name.localeCompare(b.name) :
+      b.top - a.top || b.jobs.length - a.jobs.length || a.name.localeCompare(b.name));
+
+    $("#resultLine").textContent = `Showing ${shown.length.toLocaleString()} internship${shown.length === 1 ? "" : "s"} at ${list.length.toLocaleString()} compan${list.length === 1 ? "y" : "ies"}`;
+    if (!list.length) {
+      $("#list").innerHTML = '<p class="empty">Nothing matches these filters. Try "Reset".</p>';
+      return;
+    }
+    const careers = {};
+    (DATA.watching || []).forEach((w) => { careers[w.name] = w.careers; });
+    $("#list").innerHTML = list.map((g) => {
+      const all = expanded.has(g.name) || state.q;
+      const rows = (all ? g.jobs : g.jobs.slice(0, PER_COMPANY)).map(jobHtml).join("");
+      const more = !all && g.jobs.length > PER_COMPANY
+        ? `<button class="more" data-more="${esc(g.name)}">Show all ${g.jobs.length} at ${esc(g.name)}</button>` : "";
+      const newCount = g.jobs.filter((j) => j.isNew).length;
+      return `<section class="company">
+        <header><h2>${esc(g.name)}</h2><span class="sector">${esc(SECTOR[g.sector] || "Other")}</span>
+        <span class="count">${g.jobs.length} opening${g.jobs.length === 1 ? "" : "s"}${newCount ? ` · ${newCount} new` : ""}</span>
+        ${careers[g.name] ? `<a class="careers" href="${esc(safeUrl(careers[g.name]))}" target="_blank" rel="noopener">Company careers site ↗</a>` : ""}
+        </header>${rows}${more}</section>`;
+    }).join("");
+    openJobs.forEach((id) => fillDetails(id));
+  }
+
+  function jobHtml(j) {
+    const tags = [];
+    if (j.isNew) tags.push('<span class="tag new">New this week</span>');
+    if (j.fit >= STRONG) tags.push('<span class="tag strong">Strong match</span>');
+    else if (j.fit >= GOOD) tags.push('<span class="tag goodm">Good match</span>');
+    if (j.soon) tags.push(`<span class="tag soon">Closes ${esc(fmtDate(j.deadline))}</span>`);
+    if (j.near) tags.push(`<span class="tag near">${esc(j.near)}</span>`);
+    if (j.clearance) tags.push(`<span class="tag clear">${esc(j.clearance === "Clearance" ? "Clearance mentioned" : j.clearance + " clearance")}</span>`);
+    else if (j.citizen) tags.push('<span class="tag">U.S. citizens</span>');
+    if (j.grad) tags.push('<span class="tag">Grad / post-grad</span>');
+    if (j.remote) tags.push('<span class="tag">Remote option</span>');
+    if (j.stale) tags.push('<span class="tag">From last week (site was down)</span>');
+    const meta = [];
+    const locs = j.locations.length ? j.locations.slice(0, 3).join("; ") + (j.locations.length > 3 ? ` +${j.locations.length - 3} more` : "") : "Location on posting";
+    meta.push(`<span>${esc(locs)}</span>`);
+    if (j.terms.length) meta.push(`<span>${esc(j.terms.join(", "))}</span>`);
+    if (j.pay) meta.push(`<span>${esc(j.pay)}</span>`);
+    if (j.deadline && !j.soon) meta.push(`<span>Apply by ${esc(fmtDate(j.deadline))}</span>`);
+    meta.push(`<span>${j.posted ? "Posted " + esc(fmtDate(j.posted)) : "First seen " + esc(fmtDate(j.first_seen))}</span>`);
+    const open = openJobs.has(j.id);
+    const first = j.postings[0] || {};
+    return `<article class="job" id="job-${esc(j.id)}">
+      <div class="title-row"><h3>${esc(j.title)}</h3></div>
+      <div class="meta">${meta.join("")}</div>
+      ${tags.length ? `<div class="tags">${tags.join("")}</div>` : ""}
+      <div class="actions">
+        <a class="btn primary" href="${esc(safeUrl(first.url))}" target="_blank" rel="noopener">Apply ↗</a>
+        <button class="btn" data-toggle="${esc(j.id)}" aria-expanded="${open}">${open ? "Hide details" : "Details"}</button>
+      </div>
+      <div class="details" id="d-${esc(j.id)}" ${open ? "" : "hidden"}></div>
+    </article>`;
+  }
+
+  const descCache = {};
+  async function getDesc(j) {
+    if (DATA.descriptions) return DATA.descriptions[j.id] || "";
+    if (!(j.company_id in descCache)) {
+      descCache[j.company_id] = fetch(`data/desc/${encodeURIComponent(j.company_id)}.json`)
+        .then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+    }
+    return (await descCache[j.company_id])[j.id] || "";
+  }
+
+  async function fillDetails(id) {
+    const j = jobs.find((x) => x.id === id);
+    const box = document.getElementById("d-" + id);
+    if (!j || !box) return;
+    box.hidden = false;
+    const why = j.why.length ? `<p class="why"><b>Why it's listed for you:</b> ${esc(j.why.join(", "))} (score ${j.fit}/100)</p>` : "";
+    const links = j.postings.length > 1
+      ? `<p class="links"><b>All postings for this role:</b><br>${j.postings.map((p) => `<a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">${esc(p.loc)} ↗</a>`).join("")}</p>` : "";
+    const src = `<p class="links">Source: ${esc(j.src)}</p>`;
+    box.innerHTML = why + links + src + '<div class="desc">Loading description…</div>';
+    const text = j.has_desc ? await getDesc(j) : "";
+    const d = box.querySelector(".desc");
+    if (d) d.textContent = text || "No description available here. Open the posting for the full details.";
+  }
+
+  // ---- events
+  $("#q").addEventListener("input", (e) => { state.q = e.target.value.trim(); render(); });
+  for (const id of ["term", "field", "sector", "sort"]) $("#" + id).addEventListener("change", (e) => { state[id] = e.target.value; render(); });
+  document.querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => {
+    state[b.dataset.flag] = !state[b.dataset.flag];
+    b.setAttribute("aria-pressed", String(state[b.dataset.flag]));
+    render();
+  }));
+  $("#reset").addEventListener("click", () => { state = Object.assign({}, DEFAULTS); syncControls(); render(); });
+  $("#list").addEventListener("click", (e) => {
+    const t = e.target.closest("[data-toggle]");
+    if (t) {
+      const id = t.dataset.toggle;
+      if (openJobs.has(id)) {
+        openJobs.delete(id);
+        document.getElementById("d-" + id).hidden = true;
+        t.textContent = "Details"; t.setAttribute("aria-expanded", "false");
+      } else {
+        openJobs.add(id);
+        t.textContent = "Hide details"; t.setAttribute("aria-expanded", "true");
+        fillDetails(id);
+      }
+      return;
+    }
+    const m = e.target.closest("[data-more]");
+    if (m) { expanded.add(m.dataset.more); render(); }
+  });
+
+  // ---- header + footer
+  const c = DATA.counts;
+  const firstWeek = DATA.tracker_started === today;
+  $("#stats").innerHTML = [
+    `<span><b>${c.jobs.toLocaleString()}</b> internships</span>`,
+    `<span><b>${c.companies.toLocaleString()}</b> companies</span>`,
+    firstWeek ? "" : `<span><b>${jobs.filter((j) => j.isNew).length}</b> new this week</span>`,
+    `<span>Updated ${esc(fmtDate(today))}</span>`,
+  ].join("");
+  if (firstWeek) {
+    $("#notice").innerHTML = '<div class="notice">This is the first run. "New this week" badges start with next week\'s update.</div>';
+  }
+  const watching = (DATA.watching || []).filter((w) => !w.count);
+  if (watching.length) {
+    $("#watching").innerHTML = `<h2>Also watched, with no internships posted right now</h2><p>${watching.map((w) => `<a href="${esc(safeUrl(w.careers))}" target="_blank" rel="noopener">${esc(w.name)}</a>`).join(", ")}</p>`;
+  }
+  $("#sources").innerHTML = `<table class="src"><thead><tr><th>Source</th><th>Type</th><th>Status</th><th class="num">Found</th></tr></thead><tbody>${
+    DATA.sources.slice().sort((a, b) => Number(a.ok) - Number(b.ok) || a.company.localeCompare(b.company)).map((s) => `<tr><td>${esc(s.company)}</td><td>${esc(s.kind)}</td><td class="${s.ok ? "ok" : "bad"}">${s.ok ? "OK" : "Failed" + (s.carried_over ? " (showing last week's)" : "")}</td><td class="num">${s.found}</td></tr>`).join("")
+  }</tbody></table>`;
+  $("#generated").textContent = `Last updated ${new Date(DATA.generated).toLocaleString()}.`;
+
+  syncControls();
+  render();
+})();
+</script>
+</body>
+</html>

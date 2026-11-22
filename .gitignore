@@ -1,0 +1,6 @@
+# Built by the weekly workflow and published to GitHub Pages (not stored in git)
+docs/
+
+__pycache__/
+*.pyc
+.DS_Store
