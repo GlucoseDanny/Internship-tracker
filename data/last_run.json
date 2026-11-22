@@ -1,26 +1,26 @@
 {
- "generated": "2026-11-22T17:03:26Z",
+ "generated": "2026-11-22T17:36:01Z",
  "today": "2026-11-22",
  "tracker_started": "2026-11-22",
  "counts": {
-  "jobs": 3166,
-  "companies": 888,
+  "jobs": 2896,
+  "companies": 796,
   "new": 0
  },
- "seconds": 1189,
+ "seconds": 1123,
  "sources": [
-  {
-   "company": "Rocket Lab",
-   "kind": "Greenhouse",
-   "ok": true,
-   "found": 59,
-   "error": ""
-  },
   {
    "company": "SpaceX",
    "kind": "Greenhouse",
    "ok": true,
    "found": 12,
+   "error": ""
+  },
+  {
+   "company": "Rocket Lab",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 59,
    "error": ""
   },
   {
@@ -87,13 +87,6 @@
    "error": ""
   },
   {
-   "company": "United Launch Alliance (ULA)",
-   "kind": "SuccessFactors",
-   "ok": true,
-   "found": 2,
-   "error": ""
-  },
-  {
    "company": "Voyager Technologies",
    "kind": "Greenhouse",
    "ok": true,
@@ -105,6 +98,13 @@
    "kind": "Greenhouse",
    "ok": true,
    "found": 7,
+   "error": ""
+  },
+  {
+   "company": "United Launch Alliance (ULA)",
+   "kind": "SuccessFactors",
+   "ok": true,
+   "found": 2,
    "error": ""
   },
   {
@@ -192,13 +192,6 @@
    "error": ""
   },
   {
-   "company": "Space Kinetic",
-   "kind": "Greenhouse",
-   "ok": true,
-   "found": 0,
-   "error": ""
-  },
-  {
    "company": "Constellation Space",
    "kind": "Ashby",
    "ok": true,
@@ -206,7 +199,21 @@
    "error": ""
   },
   {
+   "company": "Space Kinetic",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
    "company": "Logos Space",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Observable Space",
    "kind": "Ashby",
    "ok": true,
    "found": 0,
@@ -224,13 +231,6 @@
    "kind": "Lever",
    "ok": true,
    "found": 1,
-   "error": ""
-  },
-  {
-   "company": "Observable Space",
-   "kind": "Ashby",
-   "ok": true,
-   "found": 0,
    "error": ""
   },
   {
@@ -255,6 +255,13 @@
    "error": ""
   },
   {
+   "company": "Analytical Mechanics Associates (NASA contractor)",
+   "kind": "Workday",
+   "ok": true,
+   "found": 2,
+   "error": ""
+  },
+  {
    "company": "SAIC",
    "kind": "Oracle",
    "ok": true,
@@ -262,10 +269,10 @@
    "error": ""
   },
   {
-   "company": "Northrop Grumman",
+   "company": "KBR",
    "kind": "Workday",
    "ok": true,
-   "found": 10,
+   "found": 3,
    "error": ""
   },
   {
@@ -280,13 +287,6 @@
    "kind": "Workday",
    "ok": true,
    "found": 2,
-   "error": ""
-  },
-  {
-   "company": "Amentum",
-   "kind": "Workday",
-   "ok": true,
-   "found": 8,
    "error": ""
   },
   {
@@ -367,17 +367,24 @@
    "error": ""
   },
   {
-   "company": "Analytical Mechanics Associates (NASA contractor)",
-   "kind": "Workday",
-   "ok": true,
-   "found": 2,
-   "error": ""
-  },
-  {
    "company": "AeroVironment",
    "kind": "Workday",
    "ok": true,
    "found": 51,
+   "error": ""
+  },
+  {
+   "company": "Amentum",
+   "kind": "Workday",
+   "ok": true,
+   "found": 8,
+   "error": ""
+  },
+  {
+   "company": "GE Aerospace",
+   "kind": "Workday",
+   "ok": true,
+   "found": 64,
    "error": ""
   },
   {
@@ -388,24 +395,10 @@
    "error": ""
   },
   {
-   "company": "Honeywell Aerospace",
-   "kind": "Oracle",
-   "ok": true,
-   "found": 81,
-   "error": ""
-  },
-  {
    "company": "Hermeus",
    "kind": "Lever",
    "ok": true,
    "found": 21,
-   "error": ""
-  },
-  {
-   "company": "Moog",
-   "kind": "Workday",
-   "ok": true,
-   "found": 12,
    "error": ""
   },
   {
@@ -420,6 +413,13 @@
    "kind": "Greenhouse",
    "ok": true,
    "found": 1,
+   "error": ""
+  },
+  {
+   "company": "Moog",
+   "kind": "Workday",
+   "ok": true,
+   "found": 12,
    "error": ""
   },
   {
@@ -458,17 +458,10 @@
    "error": ""
   },
   {
-   "company": "Oak Ridge National Laboratory (ORNL)",
-   "kind": "SuccessFactors",
+   "company": "Honeywell Aerospace",
+   "kind": "Oracle",
    "ok": true,
-   "found": 1,
-   "error": ""
-  },
-  {
-   "company": "NASA Jet Propulsion Laboratory (JPL)",
-   "kind": "Workday",
-   "ok": true,
-   "found": 8,
+   "found": 81,
    "error": ""
   },
   {
@@ -479,31 +472,17 @@
    "error": ""
   },
   {
+   "company": "Oak Ridge National Laboratory (ORNL)",
+   "kind": "SuccessFactors",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
    "company": "Pacific Northwest National Laboratory (PNNL)",
    "kind": "iCIMS",
    "ok": true,
    "found": 6,
-   "error": ""
-  },
-  {
-   "company": "Lawrence Livermore National Laboratory (LLNL)",
-   "kind": "SmartRecruiters",
-   "ok": true,
-   "found": 48,
-   "error": ""
-  },
-  {
-   "company": "GE Aerospace",
-   "kind": "Workday",
-   "ok": true,
-   "found": 64,
-   "error": ""
-  },
-  {
-   "company": "Sierra Nevada Corporation",
-   "kind": "Workday",
-   "ok": true,
-   "found": 32,
    "error": ""
   },
   {
@@ -514,10 +493,17 @@
    "error": ""
   },
   {
-   "company": "The Aerospace Corporation",
+   "company": "Lawrence Livermore National Laboratory (LLNL)",
+   "kind": "SmartRecruiters",
+   "ok": true,
+   "found": 48,
+   "error": ""
+  },
+  {
+   "company": "National Laboratory of the Rockies (NREL)",
    "kind": "Workday",
    "ok": true,
-   "found": 62,
+   "found": 21,
    "error": ""
   },
   {
@@ -528,10 +514,17 @@
    "error": ""
   },
   {
-   "company": "Boeing",
+   "company": "NASA Jet Propulsion Laboratory (JPL)",
    "kind": "Workday",
    "ok": true,
-   "found": 3,
+   "found": 8,
+   "error": ""
+  },
+  {
+   "company": "The Aerospace Corporation",
+   "kind": "Workday",
+   "ok": true,
+   "found": 62,
    "error": ""
   },
   {
@@ -542,17 +535,24 @@
    "error": ""
   },
   {
-   "company": "KBR",
+   "company": "Boeing",
    "kind": "Workday",
    "ok": true,
    "found": 3,
    "error": ""
   },
   {
-   "company": "National Laboratory of the Rockies (NREL)",
+   "company": "Northrop Grumman",
    "kind": "Workday",
    "ok": true,
-   "found": 21,
+   "found": 10,
+   "error": ""
+  },
+  {
+   "company": "Sierra Nevada Corporation",
+   "kind": "Workday",
+   "ok": true,
+   "found": 32,
    "error": ""
   },
   {
@@ -573,7 +573,7 @@
    "company": "vanshb03 Summer 2027 list",
    "kind": "Community list",
    "ok": true,
-   "found": 2369,
+   "found": 2366,
    "error": ""
   }
  ]
