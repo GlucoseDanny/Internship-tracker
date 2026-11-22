@@ -1,0 +1,580 @@
+{
+ "generated": "2026-11-22T17:03:26Z",
+ "today": "2026-11-22",
+ "tracker_started": "2026-11-22",
+ "counts": {
+  "jobs": 3166,
+  "companies": 888,
+  "new": 0
+ },
+ "seconds": 1189,
+ "sources": [
+  {
+   "company": "Rocket Lab",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 59,
+   "error": ""
+  },
+  {
+   "company": "SpaceX",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 12,
+   "error": ""
+  },
+  {
+   "company": "Relativity Space",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Ursa Major",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 8,
+   "error": ""
+  },
+  {
+   "company": "Astranis",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 40,
+   "error": ""
+  },
+  {
+   "company": "Varda Space Industries",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 27,
+   "error": ""
+  },
+  {
+   "company": "Vast",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 3,
+   "error": ""
+  },
+  {
+   "company": "Stratolaunch",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 8,
+   "error": ""
+  },
+  {
+   "company": "K2 Space",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "True Anomaly",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "Muon Space",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 17,
+   "error": ""
+  },
+  {
+   "company": "United Launch Alliance (ULA)",
+   "kind": "SuccessFactors",
+   "ok": true,
+   "found": 2,
+   "error": ""
+  },
+  {
+   "company": "Voyager Technologies",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 7,
+   "error": ""
+  },
+  {
+   "company": "Inversion Space",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 7,
+   "error": ""
+  },
+  {
+   "company": "Momentus",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Scout Space",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 7,
+   "error": ""
+  },
+  {
+   "company": "Spaceium",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 5,
+   "error": ""
+  },
+  {
+   "company": "Advanced Space",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "Katalyst Space Technologies",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Planet",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 2,
+   "error": ""
+  },
+  {
+   "company": "Spire Global",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Capella Space",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "HawkEye 360",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "Northwood Space",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 2,
+   "error": ""
+  },
+  {
+   "company": "Albedo",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Cowboy Space",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 2,
+   "error": ""
+  },
+  {
+   "company": "Space Kinetic",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Constellation Space",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "Logos Space",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Apex Space",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 5,
+   "error": ""
+  },
+  {
+   "company": "E-Space",
+   "kind": "Lever",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "Observable Space",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Firefly Aerospace",
+   "kind": "Workday",
+   "ok": true,
+   "found": 10,
+   "error": ""
+  },
+  {
+   "company": "L3Harris (incl. Aerojet Rocketdyne)",
+   "kind": "SuccessFactors",
+   "ok": true,
+   "found": 114,
+   "error": ""
+  },
+  {
+   "company": "Blue Origin",
+   "kind": "Workday",
+   "ok": true,
+   "found": 48,
+   "error": ""
+  },
+  {
+   "company": "SAIC",
+   "kind": "Oracle",
+   "ok": true,
+   "found": 3,
+   "error": ""
+  },
+  {
+   "company": "Northrop Grumman",
+   "kind": "Workday",
+   "ok": true,
+   "found": 10,
+   "error": ""
+  },
+  {
+   "company": "Leidos (incl. Dynetics)",
+   "kind": "Workday",
+   "ok": true,
+   "found": 23,
+   "error": ""
+  },
+  {
+   "company": "General Dynamics Information Technology (GDIT)",
+   "kind": "Workday",
+   "ok": true,
+   "found": 2,
+   "error": ""
+  },
+  {
+   "company": "Amentum",
+   "kind": "Workday",
+   "ok": true,
+   "found": 8,
+   "error": ""
+  },
+  {
+   "company": "Torch Technologies (Huntsville / Arnold AFB)",
+   "kind": "Workday",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "CACI",
+   "kind": "Workday",
+   "ok": true,
+   "found": 23,
+   "error": ""
+  },
+  {
+   "company": "Teledyne FLIR",
+   "kind": "Workday",
+   "ok": true,
+   "found": 9,
+   "error": ""
+  },
+  {
+   "company": "Anduril Industries",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 56,
+   "error": ""
+  },
+  {
+   "company": "Shield AI",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 18,
+   "error": ""
+  },
+  {
+   "company": "Saronic",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 10,
+   "error": ""
+  },
+  {
+   "company": "Castelion",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 8,
+   "error": ""
+  },
+  {
+   "company": "Mach Industries",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 6,
+   "error": ""
+  },
+  {
+   "company": "Epirus",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "AEVEX Aerospace",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 2,
+   "error": ""
+  },
+  {
+   "company": "Hadrian",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 3,
+   "error": ""
+  },
+  {
+   "company": "Analytical Mechanics Associates (NASA contractor)",
+   "kind": "Workday",
+   "ok": true,
+   "found": 2,
+   "error": ""
+  },
+  {
+   "company": "AeroVironment",
+   "kind": "Workday",
+   "ok": true,
+   "found": 51,
+   "error": ""
+  },
+  {
+   "company": "Sierra Space",
+   "kind": "Workday",
+   "ok": true,
+   "found": 9,
+   "error": ""
+  },
+  {
+   "company": "Honeywell Aerospace",
+   "kind": "Oracle",
+   "ok": true,
+   "found": 81,
+   "error": ""
+  },
+  {
+   "company": "Hermeus",
+   "kind": "Lever",
+   "ok": true,
+   "found": 21,
+   "error": ""
+  },
+  {
+   "company": "Moog",
+   "kind": "Workday",
+   "ok": true,
+   "found": 12,
+   "error": ""
+  },
+  {
+   "company": "Archer Aviation",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Electra",
+   "kind": "Greenhouse",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "Reliable Robotics",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 16,
+   "error": ""
+  },
+  {
+   "company": "Skydio",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 25,
+   "error": ""
+  },
+  {
+   "company": "Odys Aviation",
+   "kind": "Ashby",
+   "ok": true,
+   "found": 2,
+   "error": ""
+  },
+  {
+   "company": "Acron Aviation",
+   "kind": "Lever",
+   "ok": true,
+   "found": 5,
+   "error": ""
+  },
+  {
+   "company": "Western Aircraft",
+   "kind": "Lever",
+   "ok": true,
+   "found": 3,
+   "error": ""
+  },
+  {
+   "company": "Oak Ridge National Laboratory (ORNL)",
+   "kind": "SuccessFactors",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "NASA Jet Propulsion Laboratory (JPL)",
+   "kind": "Workday",
+   "ok": true,
+   "found": 8,
+   "error": ""
+  },
+  {
+   "company": "Johns Hopkins Applied Physics Laboratory (APL)",
+   "kind": "iCIMS",
+   "ok": true,
+   "found": 57,
+   "error": ""
+  },
+  {
+   "company": "Pacific Northwest National Laboratory (PNNL)",
+   "kind": "iCIMS",
+   "ok": true,
+   "found": 6,
+   "error": ""
+  },
+  {
+   "company": "Lawrence Livermore National Laboratory (LLNL)",
+   "kind": "SmartRecruiters",
+   "ok": true,
+   "found": 48,
+   "error": ""
+  },
+  {
+   "company": "GE Aerospace",
+   "kind": "Workday",
+   "ok": true,
+   "found": 64,
+   "error": ""
+  },
+  {
+   "company": "Sierra Nevada Corporation",
+   "kind": "Workday",
+   "ok": true,
+   "found": 32,
+   "error": ""
+  },
+  {
+   "company": "Axiom Space",
+   "kind": "Workday",
+   "ok": true,
+   "found": 1,
+   "error": ""
+  },
+  {
+   "company": "The Aerospace Corporation",
+   "kind": "Workday",
+   "ok": true,
+   "found": 62,
+   "error": ""
+  },
+  {
+   "company": "Wisk",
+   "kind": "Workday",
+   "ok": true,
+   "found": 0,
+   "error": ""
+  },
+  {
+   "company": "Boeing",
+   "kind": "Workday",
+   "ok": true,
+   "found": 3,
+   "error": ""
+  },
+  {
+   "company": "Argonne National Laboratory",
+   "kind": "Workday",
+   "ok": true,
+   "found": 10,
+   "error": ""
+  },
+  {
+   "company": "KBR",
+   "kind": "Workday",
+   "ok": true,
+   "found": 3,
+   "error": ""
+  },
+  {
+   "company": "National Laboratory of the Rockies (NREL)",
+   "kind": "Workday",
+   "ok": true,
+   "found": 21,
+   "error": ""
+  },
+  {
+   "company": "RTX (Raytheon, Pratt & Whitney, Collins)",
+   "kind": "Workday",
+   "ok": true,
+   "found": 168,
+   "error": ""
+  },
+  {
+   "company": "SimplifyJobs Summer 2027 list",
+   "kind": "Community list",
+   "ok": true,
+   "found": 4879,
+   "error": ""
+  },
+  {
+   "company": "vanshb03 Summer 2027 list",
+   "kind": "Community list",
+   "ok": true,
+   "found": 2369,
+   "error": ""
+  }
+ ]
+}
