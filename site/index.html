@@ -446,7 +446,7 @@ const DATA = /*__DATA__*/null;
   const firstWeek = DATA.tracker_started === today;
   $("#stats").innerHTML = [
     `<span><b>${c.jobs.toLocaleString()}</b> internships</span>`,
-    `<span><b>${c.companies.toLocaleString()}</b> companies</span>`,
+    `<span><b>${c.companies.toLocaleString()}</b> compan${c.companies === 1 ? "y" : "ies"}</span>`,
     firstWeek ? "" : `<span><b>${jobs.filter((j) => j.isNew).length}</b> new this week</span>`,
     `<span>Updated ${esc(fmtDate(today))}</span>`,
   ].join("");

@@ -75,7 +75,12 @@ def greenhouse(c: dict) -> list[dict]:
         if not is_internship(j.get("title", ""), meta):
             continue
         locs = [(j.get("location") or {}).get("name", "")]
-        locs += [o.get("location") or o.get("name") or "" for o in (j.get("offices") or [])]
+        cities = {l.split(",")[0].strip().lower() for l in locs if l}
+        for o in j.get("offices") or []:
+            ol = o.get("location") or o.get("name") or ""
+            if ol and ol.split(",")[0].strip().lower() not in cities:
+                locs.append(ol)
+                cities.add(ol.split(",")[0].strip().lower())
         desc = html_to_text(j.get("content"))
         out.append(_posting(
             j["title"], j.get("absolute_url", ""), locs,
