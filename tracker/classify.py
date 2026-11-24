@@ -98,7 +98,7 @@ NOT_INTERN_RE = re.compile(
     r"\b(intern(ship)?s?\s+(program|recruit\w*|coordinator|manager))\b"
     r"|\b(student\s+(loan|services|affairs|success|housing|support\s+specialist))\b"
     r"|\b(university|campus|early career|intern(ship)?)\s+recruit(er|ing)\b"
-    r"|\bpostdoc|\bpost-doc|\bpostdoctoral",
+    r"|\bpostdoc|\bpost-doc|\bpostdoctoral|\bintern conversion\b",
     re.I,
 )
 HIGH_SCHOOL_RE = re.compile(r"\bhigh[- ]school\b", re.I)
@@ -309,7 +309,7 @@ _CITIZEN_RE = re.compile(
     r"|\bitar\b|export control|export-control",
     re.I,
 )
-_GRAD_RE = re.compile(r"\b(ph\.?\s?d\.?|doctoral|master'?s|masters|mba)\b|\bgraduate\s+(student|intern|research)", re.I)
+_GRAD_RE = re.compile(r"\b(ph\.?\s?d\.?|doctoral|master'?s|masters|mba|graduate)\b", re.I)
 _UNDERGRAD_RE = re.compile(r"\bundergrad", re.I)
 _POSTGRAD_RE = re.compile(r"post[- ]?(undergraduate|baccalaureate|bacc|grad|graduate)|recent graduate|new grad", re.I)
 _SKILLBRIDGE_RE = re.compile(r"skill\s?bridge", re.I)
