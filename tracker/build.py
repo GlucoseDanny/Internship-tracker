@@ -411,6 +411,33 @@ def write_outputs(jobs: list[dict], status: list[dict], companies: list[dict], m
     (DOCS / ".nojekyll").write_text("")
 
 
+def write_top_matches(jobs: list[dict], today: dt.date, limit: int = 60) -> None:
+    """data/top_matches.md: this week's best matches, readable right on GitHub."""
+    picks = [j for j in jobs if j["field"] == "Engineering" and not j["grad"] and not j["skillbridge"]]
+    picks.sort(key=lambda j: (-j["fit"], j["deadline"] or "9999"))
+    week_ago = (today - dt.timedelta(days=6)).isoformat()
+    lines = [f"# Top matches - {today.isoformat()}", "",
+             "Best-scoring engineering internships this week (grad-only and SkillBridge roles left out). "
+             "Full list: https://glucosedanny.github.io/Internship-tracker/", ""]
+    for i, j in enumerate(picks[:limit], 1):
+        url = j["postings"][0]["url"] if j["postings"] else ""
+        bits = ["; ".join(j["locations"][:2]) or "see posting", ", ".join(j["terms"]) or "term not listed"]
+        if j["pay"]:
+            bits.append(j["pay"])
+        if j["deadline"]:
+            bits.append(f"apply by {j['deadline']}")
+        if j["clearance"]:
+            bits.append(j["clearance"] if j["clearance"] != "Clearance" else "clearance mentioned")
+        elif j["citizen"]:
+            bits.append("U.S. citizens")
+        new = " **NEW**" if j["first_seen"] >= week_ago else ""
+        lines.append(f"{i}. **{j['company']}** - [{j['title']}]({url}){new}  ")
+        lines.append(f"   {' · '.join(bits)}  ")
+        lines.append(f"   Match {j['fit']}/100: {', '.join(j['why'])}")
+        lines.append("")
+    (DATA / "top_matches.md").write_text("\n".join(lines))
+
+
 # --------------------------------------------------------------------------
 
 def main(argv=None) -> int:
@@ -540,6 +567,7 @@ def main(argv=None) -> int:
         **meta, "seconds": round(time.time() - started),
         "sources": [{k: s[k] for k in ("company", "kind", "ok", "found", "error")} for s in status],
     }, indent=1))
+    write_top_matches(jobs, today)
 
     bad = [s for s in status if not s["ok"]]
     log(f"Done in {time.time() - started:.0f}s: {len(jobs)} internships at {meta['counts']['companies']} companies.")
