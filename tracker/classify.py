@@ -350,6 +350,25 @@ def find_pay(text: str) -> str:
     return ""
 
 
+MY_GPA = 3.77  # postings asking for more than this get flagged
+
+_GPA_RES = [
+    re.compile(r"\b(?:gpa|grade point average)\b[^.\n$]{0,60}?\b([2-4]\.\d{1,2})\b", re.I),
+    re.compile(r"\b([2-4]\.\d{1,2})\s*(?:/\s*4(?:\.0+)?)?\s*(?:or (?:higher|above|better|greater)|\+)?\s*(?:cumulative\s+|overall\s+|minimum\s+)?(?:gpa|grade point average)\b", re.I),
+]
+
+
+def find_min_gpa(text: str) -> float | None:
+    """Minimum GPA a posting asks for (highest number mentioned next to 'GPA')."""
+    vals = []
+    for rx in _GPA_RES:
+        for m in rx.finditer(text or ""):
+            v = float(m.group(1))
+            if 2.0 <= v <= 4.0 and v not in (4.0,):
+                vals.append(v)
+    return max(vals) if vals else None
+
+
 def clearance_of(text: str, extra: str = "") -> str:
     blob = f"{extra}\n{text}"
     m = _CLEAR_LEVEL_RE.search(blob)

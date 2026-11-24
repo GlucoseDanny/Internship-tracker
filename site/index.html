@@ -372,6 +372,7 @@ const DATA = /*__DATA__*/null;
     meta.push(`<span>${esc(locs)}</span>`);
     if (j.terms.length) meta.push(`<span>${esc(j.terms.join(", "))}</span>`);
     if (j.pay) meta.push(`<span>${esc(j.pay)}</span>`);
+    if (j.min_gpa) meta.push(`<span>Min GPA ${esc(j.min_gpa)}</span>`);
     if (j.deadline && !j.soon) meta.push(`<span>Apply by ${esc(fmtDate(j.deadline))}</span>`);
     meta.push(`<span>${j.posted ? "Posted " + esc(fmtDate(j.posted)) : "First seen " + esc(fmtDate(j.first_seen))}</span>`);
     const open = openJobs.has(j.id);

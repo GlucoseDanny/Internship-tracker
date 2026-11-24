@@ -242,6 +242,7 @@ def classify(p: dict, today: dt.date) -> dict | None:
         "field": field, "grad": grad, "skillbridge": skillbridge, "clearance": clearance,
         "citizen": citizen, "near": near, "remote": C.is_remote(locs), "fit": fit, "why": why,
         "pay": p.get("pay") or C.find_pay(desc),
+        "min_gpa": C.find_min_gpa(desc),
     }
 
 
@@ -293,7 +294,8 @@ def merge(items: list[dict]) -> list[dict]:
                 "sector": p["sector"], "title": p["title"], "field": p["field"], "terms": list(p["terms"]),
                 "locations": list(p["locations"]), "near": p["near"], "remote": p["remote"],
                 "postings": [], "clearance": p["clearance"], "citizen": p["citizen"], "grad": p["grad"],
-                "skillbridge": p["skillbridge"], "pay": p["pay"], "fit": p["fit"], "why": list(p["why"]),
+                "skillbridge": p["skillbridge"], "pay": p["pay"], "min_gpa": p.get("min_gpa"),
+                "fit": p["fit"], "why": list(p["why"]),
                 "src": p["src"], "src_key": p["src_key"], "from_list": p["from_list"],
                 "desc": C.clip(p.get("desc") or "", DESC_LIMIT),
             }
@@ -306,6 +308,7 @@ def merge(items: list[dict]) -> list[dict]:
             g["clearance"] = g["clearance"] or p["clearance"]
             g["citizen"] = g["citizen"] or p["citizen"]
             g["pay"] = g["pay"] or p["pay"]
+            g["min_gpa"] = g.get("min_gpa") or p.get("min_gpa")
             if not g["desc"] and p.get("desc"):
                 g["desc"] = C.clip(p["desc"], DESC_LIMIT)
         if posting["url"] not in {x["url"] for x in g["postings"]}:
@@ -386,13 +389,13 @@ def write_outputs(jobs: list[dict], status: list[dict], companies: list[dict], m
     # Spreadsheet
     with open(data_dir / "internships.csv", "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
-        w.writerow(["Company", "Sector", "Title", "Field", "Term", "Locations", "Near you", "Pay", "Clearance",
+        w.writerow(["Company", "Sector", "Title", "Field", "Term", "Locations", "Near you", "Pay", "Min GPA", "Clearance",
                     "US citizenship / export control", "Grad students only", "Match score", "Why it matches",
                     "Posted", "Apply by", "First seen", "Apply link", "Other links", "Source", "Description"])
         for j in jobs:
             urls = [p["url"] for p in j["postings"]]
             w.writerow([j["company"], j["sector"], j["title"], j["field"], ", ".join(j["terms"]),
-                        "; ".join(j["locations"]), j["near"], j["pay"], j["clearance"],
+                        "; ".join(j["locations"]), j["near"], j["pay"], j.get("min_gpa") or "", j["clearance"],
                         "Yes" if j["citizen"] else "", "Yes" if j["grad"] else "", j["fit"], ", ".join(j["why"]),
                         j["posted"], j["deadline"], j["first_seen"], urls[0] if urls else "", " ".join(urls[1:]),
                         j["src"], j["desc"][:32000]])
@@ -424,6 +427,8 @@ def write_top_matches(jobs: list[dict], today: dt.date, limit: int = 60) -> None
         bits = ["; ".join(j["locations"][:2]) or "see posting", ", ".join(j["terms"]) or "term not listed"]
         if j["pay"]:
             bits.append(j["pay"])
+        if j.get("min_gpa"):
+            bits.append(f"min GPA {j['min_gpa']:.2f}".rstrip("0").rstrip("."))
         if j["deadline"]:
             bits.append(f"apply by {j['deadline']}")
         if j["clearance"]:
@@ -435,7 +440,27 @@ def write_top_matches(jobs: list[dict], today: dt.date, limit: int = 60) -> None
         lines.append(f"   {' · '.join(bits)}  ")
         lines.append(f"   Match {j['fit']}/100: {', '.join(j['why'])}")
         lines.append("")
+    above = sorted((j for j in jobs if (j.get("min_gpa") or 0) > C.MY_GPA and j["field"] == "Engineering"),
+                   key=lambda j: (-j["fit"], j["company"]))
+    lines += ["", f"## Asking for a GPA above {C.MY_GPA}", ""]
+    if not above:
+        lines.append("None this week.")
+    for j in above:
+        url = j["postings"][0]["url"] if j["postings"] else ""
+        lines.append(f"- **{j['company']}** - [{j['title']}]({url}): min GPA {j['min_gpa']}")
+        m = re.search(r"[^.\n]{0,120}\b(gpa|grade point average)\b[^.\n]{0,120}", j.get("desc") or "", re.I)
+        if m:
+            lines.append(f"  > {m.group(0).strip()}")
+    with_gpa = [j for j in jobs if j.get("min_gpa")]
+    lines += ["", f"{len(with_gpa)} of {len(jobs)} postings state a minimum GPA "
+              f"(most common: {_most_common_gpa(with_gpa)}). The rest don't mention one or have no description here.", ""]
     (DATA / "top_matches.md").write_text("\n".join(lines))
+
+
+def _most_common_gpa(jobs: list[dict]) -> str:
+    from collections import Counter
+    c = Counter(round(j["min_gpa"], 2) for j in jobs)
+    return ", ".join(f"{g} ({n})" for g, n in c.most_common(4)) or "n/a"
 
 
 # --------------------------------------------------------------------------
