@@ -26,10 +26,11 @@ NASA OSTEM internships, USAJOBS Pathways, ORISE/Zintellect, DoD SMART.
 ## How each posting is tagged
 
 - **Match score**: keyword matching against my profile (propulsion, CFD,
-  thermal/fluids, test, mechanical, manufacturing, materials, CAD), with a boost
-  for Tennessee and Huntsville locations and for postings that mention a
-  security clearance. Grad-only and SkillBridge roles score low. Edit
-  `FIT_RULES` in [`tracker/classify.py`](tracker/classify.py) to change it.
+  thermal/fluids, test, mechanical, manufacturing, materials, CAD), with the
+  biggest boost for space companies and a smaller one for Tennessee and
+  Huntsville locations. Defense employers stay on the list but get no boost.
+  Grad-only and SkillBridge roles score low. Edit `FIT_RULES` and
+  `SECTOR_BONUS` in [`tracker/classify.py`](tracker/classify.py) to change it.
 - **Clearance / U.S. citizens**: the posting mentions a clearance, U.S.
   citizenship, ITAR or export control. These are labeled, never hidden.
 - **New this week**: first seen in the latest weekly run.

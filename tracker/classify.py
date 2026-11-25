@@ -411,7 +411,8 @@ _FIT_COMPILED = [(re.compile(p, re.I), wt, wd, lab) for p, wt, wd, lab in FIT_RU
 
 
 _CHIP_RE = re.compile(r"\b(asic|rtl|fpga|silicon|soc|vlsi|analog design|physical design|digital design|verification engineer|firmware|semiconductor)\b", re.I)
-SECTOR_BONUS = {"space": 15, "defense": 10, "aviation": 10, "lab": 8}
+# Space first. Defense roles stay listed but get no boost (my choice: civil/commercial space focus).
+SECTOR_BONUS = {"space": 20, "lab": 8, "aviation": 6, "defense": 0}
 
 
 def score(title: str, desc: str, *, field: str, near: str, clearance: str, grad: bool,
@@ -437,9 +438,6 @@ def score(title: str, desc: str, *, field: str, near: str, clearance: str, grad:
     if near:
         s += {"Knoxville area": 15, "Huntsville area": 7}.get(near, 6)
         why.append(near)
-    if clearance:
-        s += 6
-        why.append("clearance helps")
     if any(t.startswith("Summer 2027") for t in terms):
         s += 3
     if grad:
