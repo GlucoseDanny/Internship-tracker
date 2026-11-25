@@ -442,6 +442,18 @@ def write_top_matches(jobs: list[dict], today: dt.date, limit: int = 60) -> None
         lines.append("")
     above = sorted((j for j in jobs if (j.get("min_gpa") or 0) > C.MY_GPA and j["field"] == "Engineering"),
                    key=lambda j: (-j["fit"], j["company"]))
+    soon = sorted((j for j in jobs if j["deadline"] and j["deadline"] >= today.isoformat()
+                   and j["field"] == "Engineering" and not j["grad"] and not j["skillbridge"]),
+                  key=lambda j: (j["deadline"], -j["fit"]))
+    lines += ["", "## Closing soonest (engineering, with a posted deadline)", ""]
+    if not soon:
+        lines.append("No posted deadlines right now.")
+    for j in soon[:80]:
+        url = j["postings"][0]["url"] if j["postings"] else ""
+        loc = "; ".join(j["locations"][:2]) or "see posting"
+        lines.append(f"- **{j['deadline']}** - {j['company']}: [{j['title']}]({url}) ({loc}; match {j['fit']})")
+    lines += ["", f"{len(soon)} engineering postings list a deadline; most companies review applications as they "
+              "arrive and close the posting without a set date.", ""]
     lines += ["", f"## Asking for a GPA above {C.MY_GPA}", ""]
     if not above:
         lines.append("None this week.")
