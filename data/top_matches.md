@@ -284,7 +284,6 @@ Best-scoring engineering internships this week (grad-only and SkillBridge roles 
 - **2026-11-29** - Northrop Grumman: [2027 Electrical Engineer Intern - Gilbert AZ](https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-Arizona-Gilbert/XMLNAME-2027-Electrical-Engineer-Intern---Gilbert-AZ_R10262079) (United States-Arizona-Gilbert; match 33)
 - **2026-11-29** - Northrop Grumman: [2027 Computer Systems Intern - Linthicum MD](https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-Maryland-Linthicum/XMLNAME-2027-Computer-Systems-Intern---Linthicum-MD_R10261959) (United States-Maryland-Linthicum; match 28)
 - **2026-11-29** - Northrop Grumman: [2027 Cybersecurity Intern - Linthicum MD](https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-Maryland-Linthicum/XMLNAME-2027-Cybersecurity-Intern---Linthicum-MD_R10261960) (United States-Maryland-Linthicum; match 28)
-- **2026-11-30** - Planet: [Working Student, Professional Services](https://job-boards.greenhouse.io/planetlabs/jobs/8164904) (Berlin, Germany; Berlin Office; match 50)
 - **2026-11-30** - RTX (Raytheon, Pratt & Whitney, Collins): [Hardware Electrical Engineering Co-Op (Spring 2027)](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-MA-CAMBRIDGE-BBN01--10--50-Moulton-St--MOULTON-B2/Hardware-Electrical-Engineering-Co-Op--Spring-2027-_01883598) (US-MA-CAMBRIDGE-BBN01 ~ 10 & 50 Moulton St ~ MOULTON B2; match 41)
 - **2026-11-30** - Northrop Grumman: [2027 Enterprise Productivity Solutions Intern - Falls Church VA](https://ngc.wd1.myworkdayjobs.com/Northrop_Grumman_External_Site/job/United-States-Virginia-Falls-Church/XMLNAME-2027-Enterprise-Productivity-Solutions-Intern---Falls-Church-VA_R10262125) (United States-Virginia-Falls Church; match 36)
 - **2026-11-30** - Amentum: [Intern - Immersive Imagery SW/HW Lab Development Spring Intern](https://pae.wd1.myworkdayjobs.com/Amentum_Careers/job/US-AL-Huntsville/Intern---Immersive-Imagery-SW-HW-Lab-Development-Spring-Intern_R0175749) (US-AL-Huntsville; match 35)
@@ -315,7 +314,6 @@ Best-scoring engineering internships this week (grad-only and SkillBridge roles 
 - **2026-12-04** - Intel: [AI Hardware Engineer Intern](https://intel.wd1.myworkdayjobs.com/en-us/external/job/US-California-Santa-Clara/AI-Hardware-Engineering-Intern_JR0287533) (Santa Clara, CA; Folsom, CA; match 12)
 - **2026-12-05** - L3Harris (incl. Aerojet Rocketdyne): [Manufacturing Engineering Intern](https://jobs.l3harris.com/job/Londonderry-Manufacturing-Engineering-Intern-NH-03053/1423614800/) (Londonderry, NH; Camden, AR; match 49)
 - **2026-12-05** - Nationwide: [State Product Analyst Intern - Personal Lines](https://nationwide.wd1.myworkdayjobs.com/Nationwide_Career/job/Ohio---Columbus-One-Nationwide-Plaza/Summer-2027-State-Product-Analyst-Intern---Personal-Lines_099794) (Des Moines, IA; Columbus, OH; match 15)
-- **2026-12-06** - RTX (Raytheon, Pratt & Whitney, Collins): [Werkstudent Lean Management (m/w/d)](https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/DE-BY-NORDLINGEN-010--Anton-Jaumann-Industriepark-10--BLDG-10/Werkstudent-Lean-Management--m-w-d-_01881025) (DE-BY-NORDLINGEN-010 ~ Anton-Jaumann-Industriepark 10 ~ BLDG 10; match 22)
 - **2026-12-07** - Merck: [Co-op](https://msd.wd5.myworkdayjobs.com/searchjobs/job/USA---New-Jersey---Rahway/XMLNAME-2027-Future-Talent-Program---Global-Workplace---Enterprise-Services-Global-Real-Estate--GRES--Co-op_R415296) (Rahway, NJ; match 15)
 - **2026-12-10** - Amentum: [Intern - Electrical/Imagery Test & Design Engineer Spring Intern](https://pae.wd1.myworkdayjobs.com/Amentum_Careers/job/US-AL-Huntsville/Intern---Electrical-Imagery-Test---Design-Engineer-Spring-Intern_R0176177) (US-AL-Huntsville; match 50)
 - **2026-12-12** - L3Harris (incl. Aerojet Rocketdyne): [Structural Engineer Internship](https://jobs.l3harris.com/job/Canoga-Park-Structural-Engineer-Internship-CA-91311/1452619300/) (Canoga Park, CA; match 57)
@@ -325,12 +323,14 @@ Best-scoring engineering internships this week (grad-only and SkillBridge roles 
 - **2026-12-31** - GE Aerospace: [Propulsion Performance Engineering Intern - Bohemia, NY - Summer 2027](https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Bohemia/Propulsion-Performance-Engineering-Intern---Bohemia--NY---Summer-2027_R5042754-2) (Bohemia; match 91)
 - **2026-12-31** - GE Aerospace: [Test and Manufacturing Operations Intern - Bohemia, NY - Summer 2027](https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Bohemia/Test-and-Manufacturing-Operations-Intern---Bohemia--NY---Summer-2027_R5042960-1) (Bohemia; match 71)
 - **2026-12-31** - GE Aerospace: [Design Engineering Intern - Bohemia, NY - Summer 2027](https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Bohemia/Digital-Systems-Intern---Bohemia--NY---Summer-2027_R5042864-1) (Bohemia; match 54)
+- **2026-12-31** - GE Aerospace: [Digital Systems Engineering Intern - Bohemia, NY - Summer 2027](https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Bohemia/Digital-Systems-Engineering-Intern---Bohemia--NY---Summer-2027_R5042961-1) (Bohemia; match 48)
+- **2026-12-31** - Booz Allen: [Quantum Computing Research Intern](https://bah.wd1.myworkdayjobs.com/bah_jobs/job/Washington-DC/University---Summer-2027-Quantum-Computing-Research-Intern_R0249046) (Washington, DC; match 31)
 
-104 engineering postings list a deadline; most companies review applications as they arrive and close the posting without a set date.
+100 engineering postings list a deadline; most companies review applications as they arrive and close the posting without a set date.
 
 
 ## Asking for a GPA above 3.77
 
 None this week.
 
-486 of 2876 postings state a minimum GPA (most common: 3.0 (348), 3.5 (111), 3.2 (6), 2.75 (5)). The rest don't mention one or have no description here.
+487 of 2860 postings state a minimum GPA (most common: 3.0 (349), 3.5 (111), 3.2 (6), 2.75 (5)). The rest don't mention one or have no description here.
