@@ -13,7 +13,7 @@ import re
 import urllib.parse
 from html.parser import HTMLParser
 
-from .classify import any_us, find_pay, html_to_text, is_internship
+from .classify import any_us, explicitly_us, find_pay, html_to_text, is_internship
 from .http import FetchError, fetch
 
 # Search words used on systems where we have to search instead of listing all jobs
@@ -125,7 +125,7 @@ def lever(c: dict) -> list[dict]:
         locs = cats.get("allLocations") or [cats.get("location", "")]
         country = j.get("country")
         us = True if country == "US" else (False if country else None)
-        if us is False and any_us(locs):
+        if us is False and explicitly_us(locs):
             us = True
         out.append(_posting(
             j["text"], j.get("hostedUrl", ""), locs, us=us,
@@ -168,7 +168,7 @@ def ashby(c: dict) -> list[dict]:
         locs = [j.get("location", "")] + [s.get("location", "") for s in (j.get("secondaryLocations") or [])]
         country = (((j.get("address") or {}).get("postalAddress")) or {}).get("addressCountry") or ""
         us = True if country in ("United States", "USA", "US") else (False if country else None)
-        if us is False and any_us(locs):
+        if us is False and explicitly_us(locs):
             us = True
         f = _ashby_fields(j)
         out.append(_posting(j["title"], j.get("jobUrl", ""), locs, us=us, posted=f["posted"], desc=f["desc"], pay=f["pay"],
@@ -191,7 +191,7 @@ def _workday_detail(base: str, path: str, host: str, site: str) -> dict:
     ctry = ((info.get("jobRequisitionLocation") or {}).get("country") or {})
     code = ctry.get("alpha2Code") or ""
     us = True if code == "US" else (False if code else None)
-    if us is False and any_us(locs):
+    if us is False and explicitly_us(locs):
         us = True  # multi-location postings that include a US site
     return {
         "title": info.get("title", ""),

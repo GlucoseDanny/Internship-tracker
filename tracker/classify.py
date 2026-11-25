@@ -168,9 +168,14 @@ def any_us(locations: list[str], default: bool | None = None) -> bool | None:
     verdicts = [location_is_us(l) for l in locations if l]
     if any(v is True for v in verdicts):
         return True
-    if verdicts and all(v is False for v in verdicts):
-        return False
+    if any(v is False for v in verdicts):
+        return False  # e.g. "Berlin, Germany" + "Berlin Office"
     return default
+
+
+def explicitly_us(locations: list[str]) -> bool:
+    """A location string that literally says USA / United States / remote in the US."""
+    return any(_US_RE.search(l) or _US_REMOTE_RE.search(l) for l in locations if l)
 
 
 NEAR_HOME_RE = re.compile(r"\b(knoxville|oak ridge|tullahoma|arnold afb|arnold air force|y-12|maryville|alcoa)\b", re.I)
